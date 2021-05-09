@@ -1,0 +1,121 @@
+
+<div class="content">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <h5 class="card-header">Person List</h5>
+
+        <div class="card-body">
+
+          <ul class="list-group">
+            <li ng-click="selectedPerson(person)" class="list-group-item"
+              ng-class="{ 'active': selected.firstName === person.firstName, '': selected.firstName !== person.firstName}"
+              ng-repeat="person in personList  track by $index">{{person.firstName}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="card">
+        <h5 class="card-header">Contact Form</h5>
+
+        <div class="card-body">
+          <form [formGroup]="pform" ng-submit="addPerson()" name="frm"> 
+            <div class="row mb-2">
+              <label for="staticEmail" class="col-sm-3 col-form-label">First Name:</label>
+              <div class="col">
+                <input type="text" class="form-control" 
+                formControlName="firstName" 
+                name="firstName" 
+                ng-model="person.firstName" 
+                ng-required="true">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Last Name:</label>
+              <div class="col">
+                <input type="text" class="form-control" 
+                formControlName="lastName"
+                 name="lastName" 
+                 ng-model="person.lastName" 
+                 ng-required="true">
+              </div>
+            </div>
+
+
+            
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Last Name:</label>
+              <div class="col">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="m" value="m">
+                  <label class="form-check-label" for="m">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="f" value="f">
+                  <label class="form-check-label" for="f">Female</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Email:</label>
+              <div class="col">
+                <input type="email" class="form-control" formControlName="lastName" name="Email" ng-model="person.email">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Phone:</label>
+              <div class="col">
+                <input type="text" class="form-control" formControlName="phone" name="phone" ng-model="person.phone">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" >Add Person</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <div class="row mt-3">
+
+    <div class="col-sm-6">
+      <div class="card">
+        <h5 class="card-header">Contact Card Template</h5>
+
+        <div class="card-body">
+          <textarea ng-model="selected.template" rows="30" cols="120">
+
+
+         </textarea>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary" ng-click="save()">save</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-sm-6">
+      <div class="card">
+        <h5 class="card-header">Contact Card</h5>
+
+        <div class="card-body">
+
+          <runtime person="selected"></runtime>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
